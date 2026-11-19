@@ -1,0 +1,64 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "amsterdam-nieuwbouwplannen.py"
+version = "0.1.0"
+description = "Fully typed async Python client for the Gemeente Amsterdam Nieuwbouwplannen (DSO) API"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+authors = [{ name = "Soheab" }]
+keywords = ["amsterdam", "nieuwbouwplannen", "woningbouwplannen", "open-data", "dso-api", "async"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Framework :: AsyncIO",
+    "Intended Audience :: Developers",
+    "Natural Language :: Dutch",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Typing :: Typed",
+]
+dependencies = ["aiohttp>=3.9", "msgspec>=0.22"]
+
+[project.urls]
+Homepage = "https://amsterdam-nieuwbouwplannen.soheab.com"
+Repository = "https://github.com/Soheab/amsterdam-nieuwbouwplannen.py"
+"API documentation" = "https://api.data.amsterdam.nl/v1/docs/datasets/nieuwbouwplannen.html"
+"Dataset schema" = "https://schemas.data.amsterdam.nl/datasets/nieuwbouwplannen/dataset"
+
+[dependency-groups]
+dev = ["pytest>=8", "pytest-asyncio>=0.23", "pyright>=1.1.380", "ruff>=0.6"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/amsterdam_nieuwbouwplannen"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+markers = ["live: hits the real api.data.amsterdam.nl (run with -m live)"]
+addopts = "-m 'not live'"
+
+[tool.pyright]
+include = ["src", "tests", "examples"]
+typeCheckingMode = "strict"
+pythonVersion = "3.12"
+venvPath = "."
+venv = ".venv"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF", "ASYNC", "PIE", "PT", "TC"]
+
+[tool.ruff.lint.flake8-type-checking]
+# msgspec and TypedDict resolve annotations at runtime
+runtime-evaluated-base-classes = ["msgspec.Struct", "typing.TypedDict"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["amsterdam_nieuwbouwplannen"]
+combine-as-imports = true
