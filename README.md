@@ -19,10 +19,10 @@ Requires Python 3.12 or later. It isn't on PyPI; install it from GitHub. It's im
 `amsterdam_nieuwbouwplannen`.
 
 ```bash
-uv add git+https://github.com/Soheab/amsterdam-nieuwbouwplannen.py
+uv add "amsterdam-nieuwbouwplannen.py @ git+https://github.com/Soheab/amsterdam-nieuwbouwplannen.py"
 ```
 
-With pip: `pip install git+https://github.com/Soheab/amsterdam-nieuwbouwplannen.py`.
+With pip: `pip install "amsterdam-nieuwbouwplannen.py @ git+https://github.com/Soheab/amsterdam-nieuwbouwplannen.py"`.
 
 ## Usage
 
