@@ -1,6 +1,6 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["uv_build>=0.13.7,<0.14"]
+build-backend = "uv_build"
 
 [project]
 name = "amsterdam-nieuwbouwplannen.py"
@@ -31,8 +31,9 @@ Repository = "https://github.com/Soheab/amsterdam-nieuwbouwplannen.py"
 [dependency-groups]
 dev = ["pytest>=8", "pytest-asyncio>=0.23", "pyright>=1.1.380", "ruff>=0.6"]
 
-[tool.hatch.build.targets.wheel]
-packages = ["src/amsterdam_nieuwbouwplannen"]
+[tool.uv.build-backend]
+# The distribution name ends in ".py"; the import name doesn't.
+module-name = "amsterdam_nieuwbouwplannen"
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
