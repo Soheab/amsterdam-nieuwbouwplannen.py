@@ -15,13 +15,14 @@ See it in use on **[amsterdam-nieuwbouwplannen.soheab.com](https://amsterdam-nie
 
 ## Install
 
-Requires Python 3.12 or later. The distribution is named
-`amsterdam-nieuwbouwplannen.py` and is imported as `amsterdam_nieuwbouwplannen`.
+Requires Python 3.12 or later. It isn't on PyPI; install it from GitHub. It's imported as
+`amsterdam_nieuwbouwplannen`.
 
 ```bash
-pip install -e .            # from a checkout
-uv sync                     # dev: also installs pytest, pyright, ruff
+uv add git+https://github.com/Soheab/amsterdam-nieuwbouwplannen.py
 ```
+
+With pip: `pip install git+https://github.com/Soheab/amsterdam-nieuwbouwplannen.py`.
 
 ## Usage
 
